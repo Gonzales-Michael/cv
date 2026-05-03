@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michael Gonzales Rocha | Ingeniero Electrónico</title>
+  <meta name="description" content="Portafolio profesional de Michael Gonzales Rocha - Estudiante de Ingeniería Electrónica Industrial y Automática en la UPV." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --card: #ffffff;
+      --card-border: #e5e5e5;
+      --muted: #6b7280;
+      --accent-bg: #f5f5f5;
+      --brand: #c45c35;
+      --brand-dark: #a84d2d;
+      --brand-light: rgba(196,92,53,0.12);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
+      --radius: 12px;
+    }
+    .dark {
+      --bg: #111111;
+      --fg: #f5f5f5;
+      --card: #1a1a1a;
+      --card-border: #2a2a2a;
+      --muted: #9ca3af;
+      --accent-bg: #1f1f1f;
+      --brand-light: rgba(196,92,53,0.15);
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    html { background: var(--bg); }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-color: var(--card-border);
+      box-shadow: var(--shadow);
+    }
+    .dark nav.scrolled { background: rgba(17,17,17,0.85); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--fg); cursor: pointer; background: none; border: none; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links button { background: none; border: none; padding: 0.4rem 0.75rem; font-size: 0.875rem; font-weight: 500; color: var(--muted); cursor: pointer; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    .nav-links button:hover { color: var(--fg); background: var(--accent-bg); }
+    .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .lang-switcher { display: flex; align-items: center; gap: 6px; }
+    .lang-switcher span { font-size: 0.8rem; color: var(--muted); }
+    .lang-btn { background: none; border: none; font-size: 0.875rem; font-weight: 500; cursor: pointer; color: var(--muted); transition: color 0.2s; }
+    .lang-btn.active { color: var(--brand); font-weight: 700; }
+    .icon-btn { background: none; border: none; cursor: pointer; color: var(--muted); padding: 6px; border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; }
+    .icon-btn:hover { color: var(--fg); background: var(--accent-bg); }
+    .mobile-menu-btn { display: none; }
+    .mobile-menu { display: none; border-top: 1px solid var(--card-border); background: var(--bg); padding: 0.75rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu button { display: block; width: 100%; text-align: left; background: none; border: none; padding: 0.6rem 0.75rem; font-size: 1rem; font-weight: 500; color: var(--muted); cursor: pointer; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    .mobile-menu button:hover { color: var(--fg); background: var(--accent-bg); }
+
+    /* SECTIONS */
+    section, footer { padding: 5rem 1.5rem; }
+    .section-inner { max-width: 1152px; margin: 0 auto; }
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3rem; }
+    .section-num { font-size: 4.5rem; font-weight: 800; color: rgba(196,92,53,0.18); line-height: 1; }
+    .section-title { font-size: 2rem; font-weight: 700; color: var(--fg); }
+    .alt-bg { background: var(--accent-bg); }
+
+    /* HERO */
+    #home { min-height: 100vh; display: flex; align-items: center; padding-top: 4rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at 10% 50%, rgba(196,92,53,0.08) 0%, transparent 60%); pointer-events: none; }
+    .hero-pattern { position: absolute; inset: 0; z-index: 0; opacity: 0.015; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-content { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .availability-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .ping-dot { position: relative; width: 12px; height: 12px; }
+    .ping-dot::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #22c55e; opacity: 0.75; animation: ping 1.5s ease-in-out infinite; }
+    .ping-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #22c55e; }
+    @keyframes ping { 0% { transform: scale(1); opacity: 0.75; } 75%, 100% { transform: scale(2); opacity: 0; } }
+    .availability-text { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+    .hero-name { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--fg); }
+    .hero-degree { margin-top: 1.5rem; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--muted); font-weight: 500; }
+    .hero-uni { margin-top: 0.5rem; font-size: clamp(0.875rem, 2vw, 1.1rem); color: var(--muted); opacity: 0.8; }
+    .hero-actions { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; border: none; }
+    .btn-primary { background: var(--brand); color: white; }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-outline { background: transparent; color: var(--fg); border: 1.5px solid var(--card-border); }
+    .btn-outline:hover { background: var(--accent-bg); }
+    .btn-secondary { background: var(--accent-bg); color: var(--fg); }
+    .btn-secondary:hover { background: var(--card-border); }
+    .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s ease-in-out infinite; color: var(--muted); opacity: 0.5; }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; }
+    .about-image-col { display: flex; flex-direction: column; align-items: flex-end; }
+    .profile-placeholder { width: 200px; height: 200px; border-radius: 20px; background: linear-gradient(135deg, var(--brand-light), rgba(196,92,53,0.04)); border: 2px solid rgba(196,92,53,0.2); display: flex; align-items: center; justify-content: center; }
+    .profile-initials { font-size: 2.5rem; font-weight: 800; color: rgba(196,92,53,0.35); }
+    .location-tag { margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.875rem; font-weight: 500; }
+
+    /* EDUCATION */
+    .edu-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+    .card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--card-border); box-shadow: var(--shadow); }
+    .card-body { padding: 2rem; }
+    .edu-timeline { display: flex; align-items: flex-start; gap: 1rem; }
+    .edu-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--brand); }
+    .edu-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--fg); }
+    .edu-content .uni { margin-top: 0.25rem; color: var(--muted); }
+    .edu-period { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted); }
+    .edu-desc { margin-top: 1rem; color: var(--muted); line-height: 1.7; }
+    .edu-desc strong { color: var(--brand); font-weight: 600; }
+    .lang-card-title { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .lang-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; color: var(--brand); }
+    .lang-item { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-radius: 10px; background: var(--accent-bg); margin-bottom: 0.75rem; }
+    .lang-item-left { display: flex; align-items: center; gap: 0.75rem; }
+    .flag { width: 24px; height: auto; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+    .lang-name { font-weight: 600; font-size: 0.95rem; color: var(--fg); }
+    .lang-level { font-size: 0.875rem; color: var(--muted); font-weight: 500; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .skill-card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--card-border); padding: 1.25rem; box-shadow: var(--shadow); transition: box-shadow 0.2s, border-color 0.2s; }
+    .skill-card:hover { box-shadow: var(--shadow-lg); border-color: rgba(196,92,53,0.3); }
+    .skill-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .skill-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; color: var(--brand); flex-shrink: 0; }
+    .skill-category-title { font-size: 0.8rem; font-weight: 700; color: var(--fg); line-height: 1.3; }
+    .tool-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tool-pill { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 8px; background: var(--accent-bg); border: 1px solid var(--card-border); transition: border-color 0.2s; }
+    .tool-pill:hover { border-color: rgba(196,92,53,0.3); }
+    .tool-logo-wrap { width: 20px; height: 20px; border-radius: 4px; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+    .tool-logo-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 1px; }
+    .tool-logo-fallback { font-size: 8px; font-weight: 800; color: var(--brand); }
+    .tool-name { font-size: 0.75rem; font-weight: 600; color: var(--fg); }
+
+    /* PROJECTS CAROUSEL */
+    .carousel-wrapper { position: relative; height: 420px; overflow: hidden; margin-bottom: 2rem; }
+    .carousel-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .project-card {
+      position: absolute;
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s, z-index 0s;
+    }
+    .project-card-inner { background: var(--card); border-radius: 20px; border: 1px solid var(--card-border); box-shadow: var(--shadow-lg); padding: 2rem; height: 380px; display: flex; flex-direction: column; position: relative; }
+    .in-progress-badge { position: absolute; top: 1rem; right: 1rem; background: var(--brand); color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 20px; }
+    .project-num { font-size: 3.5rem; font-weight: 800; color: rgba(196,92,53,0.18); line-height: 1; }
+    .project-icon { margin-top: 1rem; width: 52px; height: 52px; border-radius: 14px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; color: var(--brand); }
+    .project-title { margin-top: 1.25rem; font-size: 1.05rem; font-weight: 700; color: var(--fg); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .project-desc { margin-top: 0.5rem; font-size: 0.825rem; color: var(--muted); line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .project-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { font-size: 0.7rem; font-weight: 500; padding: 3px 8px; border-radius: 6px; border: 1px solid var(--card-border); color: var(--muted); background: transparent; }
+    .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem; }
+    .carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--card-border); background: var(--card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--fg); transition: background 0.2s, border-color 0.2s; }
+    .carousel-btn:hover { background: var(--accent-bg); }
+    .dots { display: flex; align-items: center; gap: 6px; }
+    .dot { height: 8px; border-radius: 4px; border: none; background: var(--card-border); cursor: pointer; transition: all 0.3s; }
+    .dot.active { width: 28px; background: var(--brand); }
+    .dot:not(.active) { width: 8px; }
+    .carousel-counter { font-size: 0.875rem; color: var(--muted); font-weight: 600; min-width: 56px; text-align: center; }
+    .carousel-counter span { color: var(--brand); }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--card); border-radius: 20px; border: 1px solid var(--card-border); box-shadow: 0 25px 60px rgba(0,0,0,0.25); max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto; animation: modalIn 0.25s ease; }
+    @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .modal-header-gradient { height: 128px; border-radius: 20px 20px 0 0; background: linear-gradient(135deg, var(--brand), rgba(196,92,53,0.6)); display: flex; align-items: center; justify-content: center; position: relative; }
+    .modal-header-icon { color: white; }
+    .modal-in-progress { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.2); color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 20px; backdrop-filter: blur(8px); }
+    .modal-body { padding: 1.5rem; }
+    .modal-title { font-size: 1.2rem; font-weight: 700; color: var(--fg); }
+    .modal-desc { font-size: 0.925rem; color: var(--muted); line-height: 1.75; margin-top: 0.75rem; }
+    .modal-tags-label { font-size: 0.875rem; font-weight: 600; color: var(--fg); margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .modal-tags { display: flex; flex-wrap: gap; gap: 0.4rem; flex-wrap: wrap; }
+    .modal-tag { font-size: 0.8rem; font-weight: 500; padding: 4px 10px; border-radius: 8px; background: var(--accent-bg); color: var(--fg); }
+    .modal-close-btn { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; backdrop-filter: blur(8px); transition: background 0.2s; }
+    .modal-close-btn:hover { background: rgba(255,255,255,0.35); }
+
+    /* CONTACT */
+    .contact-cta-card { background: var(--card); border-radius: 20px; border: 1px solid var(--card-border); box-shadow: var(--shadow); padding: 3rem 2rem; text-align: center; margin-bottom: 1.5rem; }
+    .contact-cta-card p { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 700; color: var(--fg); max-width: 700px; margin: 0 auto; line-height: 1.5; }
+    .contact-cta-card .btn { margin-top: 2rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .contact-card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--card-border); padding: 1.25rem; box-shadow: var(--shadow); transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; display: block; }
+    .contact-card:hover { border-color: rgba(196,92,53,0.35); box-shadow: var(--shadow-lg); }
+    .contact-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem; }
+    .contact-icon-box { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: color 0.2s; }
+    .contact-card:hover .contact-icon-box { color: var(--brand); }
+    .contact-arrow { color: rgba(0,0,0,0.2); transition: color 0.2s; }
+    .dark .contact-arrow { color: rgba(255,255,255,0.2); }
+    .contact-card:hover .contact-arrow { color: var(--brand); }
+    .contact-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 4px; }
+    .contact-value { font-size: 0.875rem; font-weight: 600; color: var(--fg); word-break: break-all; }
+    .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border); text-align: center; font-size: 0.875rem; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image-col { align-items: flex-start; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .carousel-wrapper { height: 380px; }
+      .project-card { width: 260px; }
+      .project-card-inner { height: 340px; padding: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      section, footer { padding: 3.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <button class="nav-logo" onclick="scrollTo('home')">MGR</button>
+    <div class="nav-links" id="navLinks"></div>
+    <div class="nav-actions">
+      <div class="lang-switcher">
+        <i data-lucide="globe" style="width:16px;height:16px;color:var(--muted)"></i>
+        <button class="lang-btn active" id="btnES" onclick="setLang('es')">ES</button>
+        <span>/</span>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="icon-btn" onclick="toggleDark()" id="themeBtn" aria-label="Toggle theme">
+        <i data-lucide="moon" style="width:20px;height:20px"></i>
+      </button>
+      <button class="icon-btn mobile-menu-btn" onclick="toggleMobile()" aria-label="Toggle menu">
+        <i data-lucide="menu" id="mobileIcon" style="width:20px;height:20px"></i>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content" style="padding: 0 1.5rem; max-width:1280px; margin:0 auto;">
+    <div class="availability-badge">
+      <div class="ping-dot"></div>
+      <span class="availability-text" data-t="hero.available"></span>
+    </div>
+    <h1 class="hero-name"><span style="display:block">Michael</span><span style="display:block">Gonzales Rocha</span></h1>
+    <p class="hero-degree" data-t="hero.degree"></p>
+    <p class="hero-uni" data-t="hero.university"></p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="downloadCV()">
+        <i data-lucide="download" style="width:16px;height:16px"></i>
+        <span data-t="hero.downloadCV"></span>
+      </button>
+      <a href="https://linkedin.com/in/" target="_blank" rel="noopener" class="btn btn-outline">
+        <i data-lucide="linkedin" style="width:16px;height:16px"></i>
+        <span data-t="hero.linkedin"></span>
+      </a>
+      <a href="mailto:michael.gonzales.r@gmail.com" class="btn btn-outline">
+        <i data-lucide="mail" style="width:16px;height:16px"></i>
+        <span data-t="hero.sendEmail"></span>
+      </a>
+      <button class="btn btn-secondary" onclick="scrollTo('projects')">
+        <i data-lucide="arrow-down" style="width:16px;height:16px"></i>
+        <span data-t="hero.viewProjects"></span>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-indicator" onclick="scrollTo('about')">
+    <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title" data-t="about.title"></h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-desc" data-t="about.description"></p>
+      </div>
+      <div class="about-image-col">
+        <div class="profile-placeholder">
+          <span class="profile-initials">MG</span>
+        </div>
+        <div class="location-tag">
+          <span style="font-size:1.2rem">🇪🇸</span>
+          <i data-lucide="map-pin" style="width:16px;height:16px"></i>
+          <span data-t="about.location"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title" data-t="education.title"></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="card">
+        <div class="card-body">
+          <div class="edu-timeline">
+            <div class="edu-icon">
+              <i data-lucide="graduation-cap" style="width:24px;height:24px"></i>
+            </div>
+            <div class="edu-content">
+              <h3 data-t="education.degree"></h3>
+              <p class="uni" data-t="education.university"></p>
+              <div class="edu-period">
+                <i data-lucide="calendar" style="width:16px;height:16px"></i>
+                <span data-t="education.period"></span>
+              </div>
+              <p class="edu-desc" id="edu-desc-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="lang-card-title">
+            <div class="lang-icon">
+              <i data-lucide="languages" style="width:20px;height:20px"></i>
+            </div>
+            <h3 style="font-size:1rem;font-weight:700;color:var(--fg)" data-t="education.languages"></h3>
+          </div>
+          <div class="lang-item">
+            <div class="lang-item-left">
+              <img src="Flag_of_Spain.webp" alt="Español" class="flag" onerror="this.style.display='none'" />
+              <span class="lang-name" data-t="education.spanish"></span>
+            </div>
+            <span class="lang-level" data-t="education.spanishLevel"></span>
+          </div>
+          <div class="lang-item">
+            <div class="lang-item-left">
+              <img src="Flag_of_the_United_Kingdom.png" alt="English" class="flag" onerror="this.style.display='none'" />
+              <span class="lang-name" data-t="education.english"></span>
+            </div>
+            <span class="lang-level" data-t="education.englishLevel"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title" data-t="skills.title"></h2>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title" data-t="projects.title"></h2>
+    </div>
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-stage" id="carouselStage"></div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="goPrev()" aria-label="Previous">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="dots" id="dotsContainer"></div>
+      <div class="carousel-counter"><span id="counterCurrent">01</span> / <span id="counterTotal">07</span></div>
+      <button class="carousel-btn" onclick="goNext()" aria-label="Next">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title" data-t="contact.title"></h2>
+    </div>
+    <div class="contact-cta-card">
+      <p data-t="contact.description"></p>
+      <a href="mailto:michael.gonzales.r@gmail.com" class="btn btn-primary" style="background:var(--fg);color:var(--bg);margin:2rem auto 0;display:inline-flex;">
+        <i data-lucide="mail" style="width:16px;height:16px"></i>
+        <span data-t="contact.cta"></span>
+        <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+    <div class="contact-grid" id="contactGrid"></div>
+    <div class="copyright" id="copyright"></div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header-gradient" id="modalHeader">
+      <button class="modal-close-btn" onclick="closeModalDirect()">
+        <i data-lucide="x" style="width:16px;height:16px"></i>
+      </button>
+      <div class="modal-header-icon" id="modalIcon"></div>
+      <div class="modal-in-progress" id="modalBadge" style="display:none" data-t="projects.inProgress"></div>
+    </div>
+    <div class="modal-body">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-tags-label" data-t="projects.tags"></p>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const T = {
+  es: {
+    nav: { home:'Inicio', about:'Sobre Mí', education:'Educación', skills:'Habilidades', projects:'Proyectos', contact:'Contacto' },
+    hero: { available:'Disponible para prácticas o proyectos', degree:'Ingeniería Electrónica Industrial y Automática', university:'Universitat Politècnica de València (UPV)', downloadCV:'Descargar CV', linkedin:'LinkedIn', sendEmail:'Enviar Correo', viewProjects:'Ver Proyectos' },
+    about: { title:'Sobre Mí', description:'Estudiante de último curso de Ingeniería Electrónica Industrial y Automática en la Universitat Politècnica de València, con mención en electrónica. Perfil orientado a la electrónica de potencia y los sistemas embebidos, con experiencia en programación de microcontroladores y FPGA (VHDL), así como en el diseño de inversores y convertidores. Orientado a entornos de I+D e ingeniería de producto, como refleja mi TFG: un sistema embebido de monitorización y protección activa de la red eléctrica doméstica, integrando FPGA para el análisis de señal y microcontrolador para la actuación, con rediseño propio del circuito de adquisición.', location:'Valencia, España' },
+    education: { title:'Educación', degree:'Grado en Ingeniería Electrónica Industrial y Automática', university:'Universitat Politècnica de València', period:'2022 - Actualidad', languages:'Idiomas', spanish:'Español', spanishLevel:'Nativo', english:'Inglés', englishLevel:'B1/B2' },
+    educationDesc: '<strong>Mención en Electrónica</strong>. Formación en diseño analógico y digital, electrónica de potencia y sistemas embebidos, con especialización práctica en programación de <strong>microcontroladores (STM32)</strong> y <strong>FPGA (VHDL/Quartus)</strong>, diseño de <strong>PCB (KiCad)</strong> y <strong>automatización industrial</strong>.',
+    skills: { title:'Software y Herramientas' },
+    projects: { title:'Proyectos Destacados', viewMore:'Ver más', tags:'Tecnologías', inProgress:'En progreso' },
+    contact: { title:'Contacto', description:'Abierto a propuestas de prácticas, colaboraciones en proyectos y oportunidades relacionadas con mi perfil.', cta:'Contáctame', email:'Correo', phone:'Teléfono', linkedin:'LinkedIn', location:'Ubicación' },
+    projectsData: [
+      { id:1, title:'Diseño y Simulación de Inversor Monofásico SPWM', description:'Diseño integral y simulación de la etapa de potencia de un inversor monofásico en puente completo. Implementación de un sistema de control en lazo cerrado mediante un controlador PI para mantener la tensión eficaz constante, logrando una reducción drástica de la distorsión armónica (THD) hasta un 2.17%.', tags:['Electrónica de Potencia','Convertidores DC/AC','Control Automático','Matlab/Simulink','SPWM Unipolar','Filtro LC','Controlador PI'], icon:'zap', inProgress:false },
+      { id:2, title:'Sistema de Adquisición y Acondicionamiento para Medición Lineal', description:'Desarrollo end-to-end de un sistema de medición de posición. Acondicionamiento de la señal de un potenciómetro lineal y conversión a bucle de corriente para una transmisión robusta frente al ruido. Desarrollo de la interfaz gráfica y aplicación de calibración por software.', tags:['Instrumentación','Adquisición de Datos (DAQ)','Acondicionamiento de Señal','Keysight VEE Pro','Bucle de corriente','Conversor V-I (XTR110)','Transductor Resistivo'], icon:'ruler', inProgress:false },
+      { id:3, title:'Diseño de Wearable Óptico para Monitorización Cardíaca', description:'Desarrollo colaborativo de una banda deportiva de antebrazo con protección IP67 para investigación fisiológica. El sistema integra un sensor PPG y un microcontrolador ESP32-C3 para la captura y transmisión inalámbrica de bioseñales en bruto en tiempo real mediante BLE.', tags:['Wearables','IoT','Electrónica Integrada','Proyecto en Equipo (6 integrantes)','Fotopletismografía (PPG)','MAX30102','ESP32-C3','Bluetooth Low Energy (BLE)'], icon:'heart-pulse', inProgress:false },
+      { id:4, title:'Diseño de PCB para Sensor de Tensión de Red', description:'Diseño y enrutado de una PCB para la lectura segura de la tensión de red eléctrica, optimizada para compatibilidad con FPGAs. Selección e integración de un operacional AD823 (Rail-to-Rail, 30V/us) para maximizar la velocidad de adquisición y minimizar el ruido.', tags:['Diseño de PCB','Hardware','Acondicionamiento Analógico','Transformador ZMPT101B','Amplificador Operacional AD823','Montaje SMD'], icon:'circuit-board', inProgress:false },
+      { id:5, title:'Módulo ADC y Escalado de Tensión en VHDL para FPGA', description:'Desarrollo exclusivo en VHDL del módulo ADC para digitalizar la señal de la red eléctrica. El sistema transforma la señal acondicionada (0 a 2.5V) en un vector binario de 12 bits a una tasa de 1 MHz, con supresión de offset y factores de conversión exactos.', tags:['Sistemas Digitales','FPGA','VHDL','Procesamiento de Señal','Altera MAX 10','ADC 12 bits','1 MSPS','Escalado de Señal','Supresión de Offset'], icon:'cpu', inProgress:false },
+      { id:6, title:'Sistema Embebido para Control de Iluminación por Control de Fase (DSC)', description:'Desarrollo de firmware en C para un DSC TMS320F28027. Implementación de una máquina de estados para gestionar la regulación de potencia luminosa mediante control de fase, sincronizándose con la red a través de un detector de paso por cero. Incluye protocolo RS-232 con checksum.', tags:['Sistemas Embebidos','Electrónica de Potencia','Control en Tiempo Real','C/C++','DSC TMS320F28027','Control de Ángulo de Disparo','Interrupciones (ISR)','RS-232 / UART'], icon:'lightbulb', inProgress:false },
+      { id:7, title:'TFG: Sistema Embebido para Monitorización y Protección Activa de Red Eléctrica Doméstica', description:'Desarrollo integral de un sistema embebido de protección domótica en tiempo real. Incluye rediseño de PCB del sensor ZMPT101B, muestreo y procesamiento en VHDL mediante ADC de FPGA, extrayendo parámetros críticos (Vmin, Vmax, Vrms, Frecuencia) e integración con microcontrolador domótico.', tags:['Sistemas Embebidos','FPGA','IoT / Domótica','Diseño de Hardware End-to-End','Altera MAX 10','VHDL','ZMPT101B (Custom PCB)','Microcontrolador','Smart Home','Protección Activa'], icon:'shield-check', inProgress:true },
+    ],
+  },
+  en: {
+    nav: { home:'Home', about:'About Me', education:'Education', skills:'Skills', projects:'Projects', contact:'Contact' },
+    hero: { available:'Available for internships or projects', degree:'Industrial and Automatic Electronic Engineering', university:'Universitat Politècnica de València (UPV)', downloadCV:'Download CV', linkedin:'LinkedIn', sendEmail:'Send Email', viewProjects:'View Projects' },
+    about: { title:'About Me', description:'Final year student of Industrial and Automatic Electronic Engineering at the Universitat Politècnica de València, with a specialization in electronics. Profile focused on power electronics and embedded systems, with experience in microcontroller and FPGA programming (VHDL), as well as inverter and converter design. Oriented to R&D and product engineering environments, as reflected in my thesis: an embedded system for monitoring and active protection of the domestic electrical grid, integrating FPGA for signal analysis and microcontroller for actuation.', location:'Valencia, Spain' },
+    education: { title:'Education', degree:'Bachelor in Industrial and Automatic Electronic Engineering', university:'Universitat Politècnica de València', period:'2022 - Present', languages:'Languages', spanish:'Spanish', spanishLevel:'Native', english:'English', englishLevel:'B1/B2' },
+    educationDesc: '<strong>Specialization in Electronics</strong>. Training in analog and digital design, power electronics and embedded systems, with practical specialization in <strong>microcontroller programming (STM32)</strong> and <strong>FPGA (VHDL/Quartus)</strong>, <strong>PCB design (KiCad)</strong> and <strong>industrial automation</strong>.',
+    skills: { title:'Software & Tools' },
+    projects: { title:'Featured Projects', viewMore:'View more', tags:'Technologies', inProgress:'In Progress' },
+    contact: { title:'Contact', description:'Open to internship proposals, project collaborations, and opportunities related to my profile.', cta:'Contact Me', email:'Email', phone:'Phone', linkedin:'LinkedIn', location:'Location' },
+    projectsData: [
+      { id:1, title:'Design and Simulation of Single-Phase SPWM Inverter', description:'Comprehensive design and simulation of the power stage of a single-phase full-bridge inverter. Implementation of a closed-loop control system using a PI controller to maintain constant RMS voltage, achieving THD reduction to 2.17%.', tags:['Power Electronics','DC/AC Converters','Automatic Control','Matlab/Simulink','Unipolar SPWM','LC Filter','PI Controller'], icon:'zap', inProgress:false },
+      { id:2, title:'Acquisition and Conditioning System for Linear Measurement', description:'End-to-end development of a position measurement system. Signal conditioning from a linear potentiometer and conversion to current loop for noise-robust transmission. Development of the graphical interface and software calibration application.', tags:['Instrumentation','Data Acquisition (DAQ)','Signal Conditioning','Keysight VEE Pro','Current Loop','V-I Converter (XTR110)','Resistive Transducer'], icon:'ruler', inProgress:false },
+      { id:3, title:'Optical Wearable Design for Cardiac Monitoring', description:'Collaborative development of a forearm sports band with IP67 protection for physiological research. Integrates PPG sensor and ESP32-C3 microcontroller for real-time wireless biosignal transmission via BLE.', tags:['Wearables','IoT','Integrated Electronics','Team Project (6 members)','Photoplethysmography (PPG)','MAX30102','ESP32-C3','Bluetooth Low Energy (BLE)'], icon:'heart-pulse', inProgress:false },
+      { id:4, title:'PCB Design for Grid Voltage Sensor', description:'Design and routing of a PCB for safe mains voltage reading, optimized for FPGA compatibility. Integration of AD823 op-amp (Rail-to-Rail, 30V/us) to maximize acquisition speed and minimize noise.', tags:['PCB Design','Hardware','Analog Conditioning','ZMPT101B Transformer','AD823 Op-Amp','SMD Assembly'], icon:'circuit-board', inProgress:false },
+      { id:5, title:'ADC Acquisition Module and Voltage Scaling in VHDL for FPGA', description:'Exclusive VHDL development of the ADC module to digitize the mains signal. Transforms conditioned signal (0–2.5V) into a 12-bit binary vector at 1 MHz, with offset suppression and exact conversion factors.', tags:['Digital Systems','FPGA','VHDL','Signal Processing','Altera MAX 10','12-bit ADC','1 MSPS','Signal Scaling','Offset Suppression'], icon:'cpu', inProgress:false },
+      { id:6, title:'Embedded System for Phase Control Lighting (DSC)', description:'Firmware development in C for a DSC TMS320F28027. State machine for light power regulation through phase control (Triac firing angle), synchronized with the mains via zero-crossing detector. Includes robust RS-232 serial protocol with checksum.', tags:['Embedded Systems','Power Electronics','Real-Time Control','C/C++','DSC TMS320F28027','Firing Angle Control','Interrupts (ISR)','RS-232 / UART'], icon:'lightbulb', inProgress:false },
+      { id:7, title:'Thesis: Embedded System for Monitoring and Active Protection of Domestic Electrical Grid', description:'Comprehensive real-time home automation protection embedded system. Includes PCB redesign of ZMPT101B sensor, VHDL signal sampling via FPGA ADC extracting critical parameters (Vmin, Vmax, Vrms, Frequency), and integration with home automation microcontroller for safety protocols.', tags:['Embedded Systems','FPGA','IoT / Home Automation','End-to-End Hardware Design','Altera MAX 10','VHDL','ZMPT101B (Custom PCB)','Microcontroller','Smart Home','Active Protection'], icon:'shield-check', inProgress:true },
+    ],
+  }
+};
+
+const SKILLS = [
+  { id:'calc-sim', titleEs:'Cálculo y simulación', titleEn:'Calculation & Simulation', icon:'calculator', tools:[{name:'Mathcad',logo:'mathcad.png',initials:'MC'},{name:'Matlab/Simulink',logo:'Matlab_Logo.png',initials:'ML'}] },
+  { id:'design-sim', titleEs:'Diseño y simulación electrónica', titleEn:'Electronic Design & Simulation', icon:'circuit-board', tools:[{name:'Proteus',logo:'logo_proteus.png',initials:'PT'},{name:'OrCAD',logo:'orcad.png',initials:'OC'},{name:'Multisim',logo:'multisim_logo.png',initials:'MS'}] },
+  { id:'pcb', titleEs:'Diseño de PCB', titleEn:'PCB Design', icon:'cpu', tools:[{name:'KiCad',logo:'Kicad.png',initials:'KC'}] },
+  { id:'cad', titleEs:'Diseño CAD', titleEn:'CAD Design', icon:'pen-tool', tools:[{name:'AutoCAD',logo:'autcad.png',initials:'AC'}] },
+  { id:'mcu', titleEs:'Programación de microcontroladores', titleEn:'Microcontroller Programming', icon:'code', tools:[{name:'STM32CubeIDE',logo:'stm32cubeide.png',initials:'STM'},{name:'Code Composer Studio',logo:'code_composer_studio.png',initials:'CCS'}] },
+  { id:'fpga', titleEs:'Programación de FPGA', titleEn:'FPGA Programming', icon:'settings', tools:[{name:'Quartus Lite',logo:'quartus.png',initials:'QL'}] },
+  { id:'plc', titleEs:'Automatización industrial (PLC)', titleEn:'Industrial Automation (PLC)', icon:'cog', tools:[{name:'CX Programmer',logo:'cx.png',initials:'CX'}] },
+  { id:'instr', titleEs:'Instrumentación y medida', titleEn:'Instrumentation & Measurement', icon:'activity', tools:[{name:'Keysight VEE Pro',logo:'keysight.png',initials:'KV'}] },
+];
+
+const ICON_SVG = {
+  'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  'ruler': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21.3 8.7 8.7 21.3c-1 1-2.5 1-3.4 0l-2.6-2.6c-1-1-1-2.5 0-3.4L15.3 2.7c1-1 2.5-1 3.4 0l2.6 2.6c1 1 1 2.5 0 3.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg>',
+  'heart-pulse': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l1.5-3 2 4.5 1.5-2.5 1.5 2.5H21.78"/></svg>',
+  'circuit-board': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/><path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/><path d="M21 11V7"/><path d="M3 13v4"/><path d="M21 17v-2h-4"/><path d="M3 7h4"/></svg>',
+  'cpu': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+  'lightbulb': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>',
+  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let lang = 'es';
+let dark = false;
+let currentIdx = 0;
+let autoplayTimer = null;
+let isPaused = false;
+
+// ============================================================
+// LANGUAGE
+// ============================================================
+function t(key) {
+  const keys = key.split('.');
+  let obj = T[lang];
+  for (const k of keys) { obj = obj?.[k]; }
+  return obj ?? '';
+}
+
+function setLang(l) {
+  lang = l;
+  document.getElementById('btnES').classList.toggle('active', l==='es');
+  document.getElementById('btnEN').classList.toggle('active', l==='en');
+  document.documentElement.lang = l;
+  applyTranslations();
+  renderSkills();
+  renderCarousel();
+  renderContact();
+  renderNav();
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    el.textContent = t(key);
+  });
+  document.getElementById('edu-desc-text').innerHTML = T[lang].educationDesc;
+  document.title = 'Michael Gonzales Rocha | ' + (lang==='es' ? 'Ingeniero Electrónico' : 'Electronics Engineer');
+}
+
+// ============================================================
+// DARK MODE
+// ============================================================
+function toggleDark() {
+  dark = !dark;
+  document.documentElement.classList.toggle('dark', dark);
+  const btn = document.getElementById('themeBtn');
+  btn.innerHTML = dark
+    ? '<i data-lucide="sun" style="width:20px;height:20px"></i>'
+    : '<i data-lucide="moon" style="width:20px;height:20px"></i>';
+  lucide.createIcons();
+}
+
+// ============================================================
+// NAV
+// ============================================================
+function renderNav() {
+  const navItems = Object.entries(T[lang].nav);
+  const linksEl = document.getElementById('navLinks');
+  const mobileEl = document.getElementById('mobileMenu');
+  linksEl.innerHTML = navItems.map(([id, label]) =>
+    `<button onclick="scrollTo('${id}')">${label}</button>`
+  ).join('');
+  mobileEl.innerHTML = navItems.map(([id, label]) =>
+    `<button onclick="scrollTo('${id}');toggleMobile()">${label}</button>`
+  ).join('');
+}
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+function downloadCV() { alert(lang==='es' ? 'CV no disponible actualmente.' : 'CV not currently available.'); }
+
+let mobileOpen = false;
+function toggleMobile() {
+  mobileOpen = !mobileOpen;
+  document.getElementById('mobileMenu').classList.toggle('open', mobileOpen);
+  const icon = document.getElementById('mobileIcon');
+  icon.setAttribute('data-lucide', mobileOpen ? 'x' : 'menu');
+  lucide.createIcons();
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ============================================================
+// SKILLS
+// ============================================================
+function renderSkills() {
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = SKILLS.map(cat => `
+    <div class="skill-card">
+      <div class="skill-header">
+        <div class="skill-icon"><i data-lucide="${cat.icon}" style="width:18px;height:18px"></i></div>
+        <span class="skill-category-title">${lang==='es' ? cat.titleEs : cat.titleEn}</span>
+      </div>
+      <div class="tool-pills">
+        ${cat.tools.map(tool => `
+          <div class="tool-pill">
+            <div class="tool-logo-wrap">
+              <img src="${tool.logo}" alt="${tool.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+              <span class="tool-logo-fallback" style="display:none">${tool.initials}</span>
+            </div>
+            <span class="tool-name">${tool.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+// ============================================================
+// CAROUSEL
+// ============================================================
+function getCardStyle(index) {
+  const total = T[lang].projectsData.length;
+  let diff = index - currentIdx;
+  let norm = ((diff % total) + total) % total;
+  let actual = norm > total / 2 ? norm - total : norm;
+  if (actual === 0) return { transform: 'translateX(0) scale(1)', zIndex: 30, opacity: 1 };
+  if (actual === 1)  return { transform: 'translateX(65%) scale(0.85)', zIndex: 20, opacity: 0.6 };
+  if (actual === -1) return { transform: 'translateX(-65%) scale(0.85)', zIndex: 20, opacity: 0.6 };
+  if (actual === 2)  return { transform: 'translateX(120%) scale(0.7)', zIndex: 10, opacity: 0.3 };
+  if (actual === -2) return { transform: 'translateX(-120%) scale(0.7)', zIndex: 10, opacity: 0.3 };
+  return { transform: 'translateX(0) scale(0.5)', zIndex: 0, opacity: 0 };
+}
+
+function renderCarousel() {
+  const projects = T[lang].projectsData;
+  const stage = document.getElementById('carouselStage');
+  stage.innerHTML = projects.map((p, i) => {
+    const style = getCardStyle(i);
+    const iconSvg = ICON_SVG[p.icon] || ICON_SVG['cpu'];
+    return `
+      <div class="project-card" id="pcard-${i}"
+        style="transform:${style.transform};z-index:${style.zIndex};opacity:${style.opacity}"
+        onclick="handleCardClick(${i})">
+        <div class="project-card-inner">
+          ${p.inProgress ? `<div class="in-progress-badge">${T[lang].projects.inProgress}</div>` : ''}
+          <div class="project-num">${String(i+1).padStart(2,'0')}</div>
+          <div class="project-icon">${iconSvg}</div>
+          <h3 class="project-title">${p.title}</h3>
+          <p class="project-desc">${p.description}</p>
+          <div class="project-tags">
+            ${p.tags.slice(0,3).map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Dots
+  const dots = document.getElementById('dotsContainer');
+  dots.innerHTML = projects.map((_, i) =>
+    `<button class="dot ${i===currentIdx?'active':''}" onclick="goToSlide(${i})" aria-label="Project ${i+1}"></button>`
+  ).join('');
+
+  document.getElementById('counterCurrent').textContent = String(currentIdx+1).padStart(2,'0');
+  document.getElementById('counterTotal').textContent = String(projects.length).padStart(2,'0');
+}
+
+function updateCarouselPositions() {
+  const projects = T[lang].projectsData;
+  projects.forEach((_, i) => {
+    const card = document.getElementById(`pcard-${i}`);
+    if (!card) return;
+    const style = getCardStyle(i);
+    card.style.transform = style.transform;
+    card.style.zIndex = style.zIndex;
+    card.style.opacity = style.opacity;
+  });
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((d, i) => d.classList.toggle('active', i===currentIdx));
+  document.getElementById('counterCurrent').textContent = String(currentIdx+1).padStart(2,'0');
+  // update in-progress badges text
+  document.querySelectorAll('.in-progress-badge').forEach(b => {
+    b.textContent = T[lang].projects.inProgress;
+  });
+}
+
+function goToSlide(i) {
+  const total = T[lang].projectsData.length;
+  currentIdx = ((i % total) + total) % total;
+  updateCarouselPositions();
+  resetAutoplay();
+}
+
+function goNext() { goToSlide(currentIdx + 1); }
+function goPrev() { goToSlide(currentIdx - 1); }
+
+function resetAutoplay() {
+  clearInterval(autoplayTimer);
+  if (!isPaused) {
+    autoplayTimer = setInterval(goNext, 3500);
+  }
+}
+
+function handleCardClick(i) {
+  if (i === currentIdx) {
+    openModal(i);
+  } else {
+    goToSlide(i);
+  }
+}
+
+// Pause on hover
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.getElementById('carouselWrapper');
+  wrapper.addEventListener('mouseenter', () => { isPaused = true; clearInterval(autoplayTimer); });
+  wrapper.addEventListener('mouseleave', () => { isPaused = false; resetAutoplay(); });
+});
+
+// ============================================================
+// MODAL
+// ============================================================
+function openModal(i) {
+  const p = T[lang].projectsData[i];
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalDesc').textContent = p.description;
+  document.getElementById('modalIcon').innerHTML = ICON_SVG[p.icon] || ICON_SVG['cpu'];
+  document.getElementById('modalTags').innerHTML = p.tags.map(tag =>
+    `<span class="modal-tag">${tag}</span>`).join('');
+  const badge = document.getElementById('modalBadge');
+  badge.style.display = p.inProgress ? 'block' : 'none';
+  badge.textContent = T[lang].projects.inProgress;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModalDirect();
+});
+
+// ============================================================
+// CONTACT
+// ============================================================
+function renderContact() {
+  const contact = T[lang].contact;
+  const items = [
+    { icon:'mail', label:contact.email, value:'michael.gonzales.r@gmail.com', href:'mailto:michael.gonzales.r@gmail.com' },
+    { icon:'phone', label:contact.phone, value:'+34 640 802 813', href:'tel:+34640802813' },
+    { icon:'linkedin', label:contact.linkedin, value:'LinkedIn', href:'https://linkedin.com/in/' },
+    { icon:'map-pin', label:contact.location, value:lang==='es'?'Valencia, España':'Valencia, Spain', href:null },
+  ];
+
+  const grid = document.getElementById('contactGrid');
+  grid.innerHTML = items.map(item => {
+    const inner = `
+      <div class="contact-card-top">
+        <div class="contact-icon-box"><i data-lucide="${item.icon}" style="width:20px;height:20px"></i></div>
+        ${item.href ? '<i data-lucide="arrow-up-right" class="contact-arrow" style="width:16px;height:16px"></i>' : ''}
+      </div>
+      <div>
+        <p class="contact-label">${item.label}</p>
+        <p class="contact-value">${item.value}</p>
+      </div>`;
+    if (item.href) {
+      return `<a href="${item.href}" target="${item.href.startsWith('http')?'_blank':''}" rel="${item.href.startsWith('http')?'noopener noreferrer':''}" class="contact-card">${inner}</a>`;
+    }
+    return `<div class="contact-card" style="cursor:default">${inner}</div>`;
+  }).join('');
+
+  document.getElementById('copyright').textContent =
+    `© ${new Date().getFullYear()} Michael Gonzales Rocha. All rights reserved.`;
+
+  lucide.createIcons();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  applyTranslations();
+  renderSkills();
+  renderCarousel();
+  renderContact();
+  lucide.createIcons();
+  autoplayTimer = setInterval(goNext, 3500);
+});
+</script>
+</body>
+</html>
