@@ -306,7 +306,7 @@
           <span class="profile-initials">MG</span>
         </div>
         <div class="location-tag">
-          <span style="font-size:1.2rem">🇪🇸</span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAADTUlEQVR42u2YTW9bRRSGnzP3+uLavo7jfDVx0gRThVJBxaICUXXFh6hUiR0IiQX8AMS/YAU/gC1FLFh0E4GEQou6CQiJRStaSKpSBG4SN7FdN4k/771zWNhigQpxqbjEIkcaaeZKc2fe857zzpmRixPTyhCbYcjtEMAhgEc0FxlyABoOOQAva//ZTAH0Af2YTRpL5qGX1v4M0w8/2x+LDAkDBjAGGu2e89NJsBbsQc8BBRwDO5FHgMPVX9MYo5w61sQjIuN0iSyx6sLAKqTa2/xGPUVpNUVQETqVBMYoP44ZvAnL3JNNpkdaPRASF4ABXW8ccNIQ1ixrHyWJOkI4GmHF4NaP4KWUmQ/3cNKgTdCIWKiQ7uW/1w9VcBJQ33K4cc3j7CstfvrFcOGLJKYFfisgSCmvnw85cQK+W8mw+FSbXD4kCv99JgZiwDFQrkdcWmtRLLrc/3ScQilAN3L477yGzLW4OxLiVy/y5ff3yE4JYxMQxXDG7F9KiKABTBRnOPXmezwGrK4kqc81mM2lyC+eplB6gc2Nl/FGj/DsG+8yOjcJYTy66g4mPVD9VghvbnKrMoJMRtSfVprXm6TvVXHcHL4Xsfp5mu72OrWThukzQAx5MAADoBa2f87Szs9j/AiMMnYtz1dj8yytXKc51SZIgpe0dPILlG9neoeCHIQQUpAETB3fJfVDiZHn9whmmxz7rcNOMk/tbo37n31A9ZP3GffLJNfWKcw3etzqgcgB0BDq2yOk3nqOzEKE9ULaC5ZzeoXz9W+441QJS5v4hRD/7TPUtjKxhM+A9wFFgMdfLdFuXkY6StRxkFaElwnw/C7phoOSRKKA5t4yT5xb7+9dYwCg/XX+olkriAPLV4tc+DpHuTvLydNNdsVnu/gS1eKLuK0sz5zd5U5iho+XR7l0YxFMb+5+/3/UJsGV/d1kBG7XjlLem2Zx/BYT2V3WK2OUOrNYVRa8DQqTFbZ2fG5WjnM0s0kxX/6jSv3Py2lVSLoWx4FuAIE1eK7F7Yd5INANDAlj8RIQRdAOTSz1kCwtTOlAiayCqmCkx50ivexQej1RQLAqiPTHMTDgdnce9l4vD5CXP38T4iqqXXEZanPR4QZw+LB1COD/DuB3cEpklcof1FMAAAAASUVORK5CYII=" alt="España" style="width:28px;height:19px;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.15);object-fit:cover;"/>
           <i data-lucide="map-pin" style="width:16px;height:16px"></i>
           <span data-t="about.location"></span>
         </div>
@@ -771,6 +771,15 @@ document.addEventListener('keydown', e => {
 // ============================================================
 // CONTACT
 // ============================================================
+function getContactIcon(name) {
+  const s = 'width:20px;height:20px';
+  if (name === 'linkedin') return `<svg xmlns="http://www.w3.org/2000/svg" ${s} viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`;
+  if (name === 'mail') return `<svg xmlns="http://www.w3.org/2000/svg" ${s} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`;
+  if (name === 'phone') return `<svg xmlns="http://www.w3.org/2000/svg" ${s} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+  if (name === 'map-pin') return `<svg xmlns="http://www.w3.org/2000/svg" ${s} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+  return `<i data-lucide="${name}" style="${s}"></i>`;
+}
+
 function renderContact() {
   const contact = T[lang].contact;
   const items = [
@@ -784,7 +793,7 @@ function renderContact() {
   grid.innerHTML = items.map(item => {
     const inner = `
       <div class="contact-card-top">
-        <div class="contact-icon-box"><i data-lucide="${item.icon}" style="width:20px;height:20px"></i></div>
+        <div class="contact-icon-box">${getContactIcon(item.icon)}</div>
         ${item.href ? '<i data-lucide="arrow-up-right" class="contact-arrow" style="width:16px;height:16px"></i>' : ''}
       </div>
       <div>
