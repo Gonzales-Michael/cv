@@ -125,7 +125,7 @@ export const translations = {
         id: 7,
         title: 'TFG: Sistema Embebido para Monitorización y Protección Activa de Red Eléctrica Doméstica',
         description:
-          'Desarrollo integral de un sistema embebido de protección domótica en tiempo real. El proyecto abarca: Rediseño a nivel de hardware (PCB) del sensor ZMPT101B para corregir defectos de fábrica y mejorar la velocidad/estabilidad de adquisición. Muestreo y procesamiento de la señal en VHDL mediante el ADC de la FPGA, extrayendo parámetros críticos (Vmin, Vmax, Vrms, Frecuencia). Integración y comunicación con un microcontrolador domótico para accionar protocolos de seguridad (corte/aislamiento de la red eléctrica) ante anomalías, protegiendo la instalación doméstica.',
+          'Desarrollo integral de un sistema embebido de protección domótica en tiempo real. El proyecto abarca: Rediseño a nivel de hardware (PCB) del sensor ZMPT101B para corregir defectos de fábrica y mejorar la velocidad/estabilidad de adquisición. Muestreo y procesamiento de la señal en VHDL mediante el ADC de la FPGA (Intel FPGA DE-Lite), extrayendo parámetros críticos (Vmin, Vmax, Vrms, Frecuencia) para poder evaluar la estabilidad de la red electricas. Integración y comunicación con un microcontrolador domótico para accionar protocolos de seguridad (corte/aislamiento de la red eléctrica) ante anomalías, protegiendo la instalación doméstica.',
         tags: ['Sistemas Embebidos', 'FPGA', 'IoT / Domótica', 'Diseño de Hardware End-to-End', 'Altera MAX 10', 'VHDL', 'ZMPT101B (Custom PCB)', 'Microcontrolador', 'Smart Home', 'Protección Activa'],
         icon: 'shield-check',
         inProgress: true,
@@ -256,7 +256,7 @@ export const translations = {
         id: 7,
         title: 'Thesis: Embedded System for Monitoring and Active Protection of Domestic Electrical Grid',
         description:
-          'Comprehensive development of a real-time home automation protection embedded system. The project covers: Hardware-level (PCB) redesign of the ZMPT101B sensor to correct factory defects and improve acquisition speed/stability. Signal sampling and processing in VHDL using the FPGA ADC, extracting critical parameters (Vmin, Vmax, Vrms, Frequency). Integration and communication with a home automation microcontroller to trigger safety protocols (grid disconnection/isolation) upon anomalies, protecting the home installation.',
+          'Comprehensive development of a real-time home automation protection embedded system. The project covers: Hardware-level (PCB) redesign of the ZMPT101B sensor to correct factory defects and improve acquisition speed/stability. Signal sampling and processing in VHDL using the FPGA ADC (Intel FPGA DE10-Lite), extracting critical parameters (Vmin, Vmax, Vrms, Frequency) for power grid stability analysis. Integration and communication with a home automation microcontroller to trigger safety protocols (grid disconnection/isolation) upon anomalies, protecting the home installation.',
         tags: ['Embedded Systems', 'FPGA', 'IoT / Home Automation', 'End-to-End Hardware Design', 'Altera MAX 10', 'VHDL', 'ZMPT101B (Custom PCB)', 'Microcontroller', 'Smart Home', 'Active Protection'],
         icon: 'shield-check',
         inProgress: true,
